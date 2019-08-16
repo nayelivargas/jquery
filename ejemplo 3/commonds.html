@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!--<script src="jquery-3.4.1.min.js"></script>-->
+        <script
+                  src="https://code.jquery.com/jquery-3.4.1.min.js"
+                  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                  crossorigin="anonymous">
+            </script>
+        <title>commonds</title>
+
+        <style>
+        .correct{
+            color: green;
+
+        }
+        .wrong{
+            color:red;
+            background:pink;
+        }
+        .done{
+            color:gray;
+            text-decoration: line-through;
+
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Common jQuery Methods</h1>
+        <ul id="common methods">
+            <li>val()</li>
+            <li>text()</li>
+            <li>attr()</li>
+            <li>html()</li>
+            <li>addClass()</li>
+            <li>removeClass()</li>
+            <li>toggleClass()</li>
+        </ul>
+        <input type="text" name="text" id="text" placeholder="Write something">
+
+        <img src="./img1" alt="">
+    
+        <h2>Task List</h2>
+
+        <ul id="tasks">
+            <li>Go for a run</li>
+            <li>Make homework</li>
+            <li>Shop notebook</li>
+        </ul>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+
+    <script>
+
+            $('h1').text('You have been hacked')    
+            //Get the current value from the input
+            var current = $('common-methods').html()
+            $('common-methods').html(current+'<li>New element</li><li>Another New element</li>')
+            $('input').val()
+            // Set the input value
+            $('input').val('Bye bye!')
+            //Change the with the image
+            $('img').attr('with','30')
+            //Cahnge the image
+            $('img').attr('src','img2.jpeg')
+            //Mark all tasks as correct
+            $('#tasks').addClass('correct')
+            //Toogle all tasks as wrong
+            $('#tasks').toggleClass('wrong')
+            $('#tasks').toggleClass('wrong')
+            //Mark the firs task as done
+            $('#tasks li:first').addClass('done')
+        </script>
+</body>
+    </html>
