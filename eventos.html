@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Common events</title>
+</head>
+
+<body>
+
+    <h1>Common jQuery Events</h1>
+
+    <input type="text" placeholder="Write something..." id="something">
+
+    <button>Don't clicke me</button>
+    <button>Seriously don't click me!</button>
+    <button>Ok, click me</button>
+
+    <h2>on() example</h2>
+    <input type="text" placeholder="Add Something" id="add">
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+
+<script>
+    $('button').click(function(event){ 
+        console.log($(this).text()); 
+    });
+
+    $('#something').keypress(function(event) { 
+        console.log('You typed: ' + event.key);
+        if(event.which == 13){
+            alert('You can go on!');
+        }
+    });
+
+    $('#add').on('keypress',function(event){
+        if(event.which == 13){
+            $('ul').append('<li>'+ $(this).val() + '</li>');
+            console.log('Adding ' + $(this).val());
+            $(this).val('');
+        }
+    });
+
+    $('ul').on('click','li',function(){
+        console.log($(this).text());
+    });
+
+    $('button').on('mouseenter',function(){
+        $(this).css('background-color','pink');
+    });
+    $('button').on('mouseout', function(){
+        $(this).css('background-color','white');
+    });
+</script>
+
+</body>
+
+</html>
