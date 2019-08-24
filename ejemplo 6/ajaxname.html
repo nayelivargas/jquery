@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax Uinames</title>
+</head>
+
+<body>
+    <h1>UInames examples</h1>
+
+    <h2>Users</h2>
+
+    <input type="number" id="amount" placeholder="Numero de usuarios">
+    <ul id="users">
+
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+
+    <script>
+        $('#amount').on('keypress', function () {
+            if (event.which == 13) {
+                $('#users').html("");
+                jQuery.ajax({
+                    method: "GET",
+                    url: "https://uinames.com/api/?amount=" + $('#amount').val() + "&region=mexico",
+                    success: function (data) {
+                        //console.log(data);
+                        if ($('#amount').val() == 1) {
+                            $('#users').append('<li>' + data.name + ' ' + data.surname + '</li>')
+                        }
+                        else {
+                            var i, user;
+                            for (i = 0; i < data.length; i++) {
+                                user = data[i];
+                                //console.log(user);
+                                $('#users').append('<li>' + user.name + ' ' + user.surname + '</li>')
+                            }
+                        }
+                    },
+                    error: function(data){
+                        console-log('There is something wrong !!!');
+                        console.log(data);
+                    }
+                })
+                $('#amount').val("");
+            }
+        });
+    </script>
+</body>
+
+</html>
