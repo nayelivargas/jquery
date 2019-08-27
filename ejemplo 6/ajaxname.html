@@ -12,26 +12,66 @@
     <h1>UInames examples</h1>
 
     <h2>Users</h2>
+<div>
+    <label>male</label>
+    <input type="radio" name="gender" id="male">
+    <label >female</label>
+    <input type="radio" name="gender" id="female">
+    <label >random</label>
+    <input type="radio" name="gender" id="random">
+</div>
+<div>
+    <label for="region">region</label>
+    <select name="region" id="region"></select>
+    <option >France</option>
+    <option>Germany</option>
+    <option >Mexico</option>
+    <option >India</option>
+    <option >Russia</option>
+    <option >Random</option>
+</div>
 
+<div>
+    <label >data extra</label>
+    <input type="checkbox" id="extra">
+</div>
     <input type="number" id="amount" placeholder="Numero de usuarios">
     <ul id="users">
 
     </ul>
-
+    <p class="errors"></p>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
         </script>
 
     <script>
-        $('#amount').on('keypress', function () {
+        var gender = "";
+        var region ="";
+        var urlstring = "https://uinames.com/api/?amount=" + amount
+                    +"&gender=" +gender
+                    +"$region=" +region
+       var extra=$('#extra').prop('checked'
+                    if(extra)){
+ $('#users').append('<li>'+ data.name +''+ data.surname+
+    '<img src="'+ data.photo +'">'+ '</li>');
+            //urlstring += "&text";
+        }else
+        
+        $('input[type=radio]').on('click',function(){
+            gender=$(this).attr('id');
+        })
+                $('#amount').on('keypress', function () {
             if (event.which == 13) {
                 $('#users').html("");
+                $('errors').html("");
+                var amount = $('#amount').val();
+                $('#amount').val('');
                 jQuery.ajax({
                     method: "GET",
-                    url: "https://uinames.com/api/?amount=" + $('#amount').val() + "&region=mexico",
+                    url: 
                     success: function (data) {
                         //console.log(data);
-                        if ($('#amount').val() == 1) {
+                        if (amount == 1) {
                             $('#users').append('<li>' + data.name + ' ' + data.surname + '</li>')
                         }
                         else {
@@ -44,11 +84,11 @@
                         }
                     },
                     error: function(data){
-                        console-log('There is something wrong !!!');
-                        console.log(data);
+                       // console.log('There is something wrong !!!');
+                        //console.log(data);
                     }
                 })
-                $('#amount').val("");
+               // $('#amount').val("");
             }
         });
     </script>
